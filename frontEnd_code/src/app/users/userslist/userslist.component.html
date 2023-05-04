@@ -1,0 +1,28 @@
+<mat-toolbar>
+    <span>Users</span>
+</mat-toolbar>
+<div>
+    <button  mat-raised-button color="primary" [routerLink]="['/main']">Back to main</button>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="table">
+
+    <ng-container matColumnDef="username">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="accessLevel">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Access Level </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.accessLevel}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/uupdate/' + row._id]"
+        style="cursor: pointer"></mat-row>
+</table>

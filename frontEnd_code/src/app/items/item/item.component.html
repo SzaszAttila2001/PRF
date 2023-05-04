@@ -1,0 +1,30 @@
+<mat-toolbar class="c-toolbar">
+    <span>&nbsp;Item details</span>
+</mat-toolbar>
+
+<div>
+<form [formGroup]="form" (ngSubmit)="save(form.value)">
+
+    <div class="container">
+        <mat-card style="max-width: 640px; width: 100%;">
+            <mat-form-field appearance="fill" class="max-width">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" type="text">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="max-width">
+                <mat-label>Price</mat-label>
+                <input matInput formControlName="price" type="number">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="max-width">
+                <mat-label>Description</mat-label>
+                <input matInput formControlName="description" type="text">
+            </mat-form-field>
+
+            <div style="display: flex; justify-content: flex-end;">
+                <button type="submit" mat-raised-button [disabled]="form.invalid" color="primary">Save</button>
+            </div>
+        </mat-card>
+    </div>
+</form>
+<button (click)="delete()" type="delete" mat-raised-button [disabled]="form.invalid" color="primary">Delete</button>
+</div>

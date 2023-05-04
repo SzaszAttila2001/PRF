@@ -1,0 +1,30 @@
+<mat-toolbar class="c-toolbar">
+    <span>&nbsp;Item details</span>
+</mat-toolbar>
+
+<div>
+<form [formGroup]="form" (ngSubmit)="save(form.value)">
+
+    <div class="container">
+        <mat-card style="max-width: 640px; width: 100%;">
+            <mat-form-field appearance="fill" class="max-width">
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="username" type="text">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="max-width">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" type="email">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="max-width">
+                <mat-label>Access Level</mat-label>
+                <input matInput formControlName="accessLevel" type="number">
+            </mat-form-field>
+
+            <div style="display: flex; justify-content: flex-end;">
+                <button type="submit" mat-raised-button [disabled]="form.invalid" color="primary">Save</button>
+            </div>
+        </mat-card>
+    </div>
+</form>
+<button (click)="delete()" type="delete" mat-raised-button [disabled]="form.invalid" color="primary">Delete</button>
+</div>

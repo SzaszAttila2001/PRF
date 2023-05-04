@@ -1,0 +1,29 @@
+<mat-toolbar class="c-toolbar">
+    <span>&nbsp;Registration form!</span>
+</mat-toolbar>
+
+<div>
+<form [formGroup]="form" (ngSubmit)="save(form.value)">
+
+    <div class="container">
+        <mat-card style="max-width: 640px; width: 100%;">
+            <mat-form-field appearance="fill" class="max-width">
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="username" type="text">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="max-width">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password" type="password">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="max-width">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" type="email">
+            </mat-form-field>
+    
+            <div style="display: flex; justify-content: flex-end;">
+                <button type="submit" mat-raised-button [disabled]="form.invalid" color="primary">Registration</button>
+            </div>
+        </mat-card>
+    </div>
+</form>
+</div>

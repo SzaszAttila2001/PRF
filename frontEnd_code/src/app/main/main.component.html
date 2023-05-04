@@ -1,0 +1,35 @@
+<mat-toolbar>
+    <span>Items</span>
+</mat-toolbar>
+<div>
+    <button mat-raised-button color="primary" [routerLink]="['/newitem']">Resiter new item</button>
+    <button *ngIf="isAdmin" mat-raised-button color="primary" [routerLink]="['/users']">List users</button>
+    <button (click)="logout()" mat-raised-button color="primary">Logout</button>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="table">
+
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="owner_name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Owner </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.owner_name}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/item/' + row._id]"
+        style="cursor: pointer"></mat-row>
+</table>
